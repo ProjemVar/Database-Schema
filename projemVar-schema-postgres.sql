@@ -40,3 +40,14 @@ CREATE TABLE Projects (
     primary key (pno),
     foreign key (creator_nickname) references Users(nickname)
 );
+
+
+-- ProjectsTeam tablosunda projede bulunan uyeler var.
+DROP TABLE ProjectsTeam CASCADE;
+CREATE TABLE ProjectsTeam ( -- membership
+    pno	        int,
+    nickname 	varchar(20) not null,
+    primary key(pno, nickname),
+    foreign key(pno) references Projects(pno),
+    foreign key(nickname) references Users(nickname)
+);
