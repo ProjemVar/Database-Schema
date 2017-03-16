@@ -9,6 +9,7 @@ CREATE TABLE Users (
     email_private   varchar(20) not null,
     password        varchar(20) not null,
     email_public    varchar(20),
+    unique(nickname, email_private),
     primary key (nickname)
 );
 
@@ -20,20 +21,22 @@ CREATE TABLE UsersSocialMedia (
     github          varchar(20),
     stackoverflow   varchar(20),
     medium          varchar(20),
+    unique(nickname),
     primary key (nickname),
     foreign key (nickname) references Users(nickname)
 );
 
+-- Projects tablosunda projelerin ozelliklerini tutuyoruz.
 DROP TABLE Projects CASCADE;
 CREATE TABLE Projects (
+    pno			        int,
     project_name        varchar(20) not null,
     creator_nickname    varchar(20) not null,
     createdDate         date,
     project_size        int,    -- quota 5 or 10 or limitless
     project_status      int,    -- 1 ? Active : 2 ? Maintain : 3 ? Finished : None
     project_content     varchar(100) not null,
-    project_team        varchar(20) not null, -- memberships
-    project_tags        varchar(20) not null, -- tags like js, nodejs, express, python
-    primary key (creator_nickname, project_name),
+    unique(project_name),
+    primary key (pno),
     foreign key (creator_nickname) references Users(nickname)
 );
