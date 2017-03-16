@@ -51,3 +51,12 @@ CREATE TABLE ProjectsTeam ( -- membership
     foreign key(pno) references Projects(pno),
     foreign key(nickname) references Users(nickname)
 );
+
+-- ProjectsTags tablosunda projenin tag leri yani 'nodejs', 'cava', 'fayton' gibi ifadeleri tutuyoruz.
+DROP TABLE ProjectsTags CASCADE;
+CREATE TABLE ProjectsTags (
+    pno	int,
+    tag	varchar(15) not null,
+    primary key(pno),
+    foreign key(pno) references Projects(pno)
+);
