@@ -45,3 +45,8 @@ Database Schema
   Enter password:                             # Buraya '123456' degerini giriyoruz.
   mysql> show databases;                      # Kullanicimizin ulasabilecegi tum veritabanlarini gosteriyor.
 ```
+
+# Mysql de sql dosyasi calistirmak.
+```
+  (bash)$ mysql -u furakn -p ProjemVar < projemVar-schema-maria.sql
+```
